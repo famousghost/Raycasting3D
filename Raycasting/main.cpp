@@ -48,7 +48,7 @@ int main()
         {
             double dist = l_rayDistances[i];
             double colorValue = Transformations::remap(dist, 0.0, l_windowHeight, 255.0, 0.0);
-            double heightValue = screen_dist / dist * 20.0;
+            double heightValue = screen_dist / (dist + 0.001) * 20.0;
 
             rectangleShape.setFillColor(sf::Color(255, 255, 255, colorValue));
             rectangleShape.setPosition(sf::Vector2f(widthSize * i, l_windowHeight / 2 - heightValue / 2));
