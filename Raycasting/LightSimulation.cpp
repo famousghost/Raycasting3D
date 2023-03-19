@@ -41,11 +41,16 @@ void LightSimulation::decreaseFov()
     }
 }
 
+double LightSimulation::getFov() const
+{
+    return m_fov;
+}
+
 void LightSimulation::prepareScene()
 {
     sf::Vector2f l_center = sf::Vector2f(400.0f, 200.0f);
     m_rayLength = 1000.0;
-    m_fov = 45;
+    m_fov = 60;
     sf::Vector2f l_rayOrigin = sf::Vector2f(650.0f, 300.0f);
     sf::Vector2f l_rayDirection = sf::Vector2f(0.0f, -1.0f);
 

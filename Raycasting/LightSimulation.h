@@ -16,6 +16,8 @@ public:
 
     void decreaseFov();
 
+    double getFov() const;
+
     void prepareScene();
 
     void createRays();

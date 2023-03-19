@@ -42,14 +42,16 @@ int main()
         auto l_rayDistances = l_lightSimulation.getDistances();
 
         int widthSize = l_windowWidth / l_rayDistances.size() / 2;
+
+        double screen_dist = l_windowWidth / 2 / std::tan(l_lightSimulation.getFov());
         for (int i = 0; i < l_rayDistances.size(); ++i)
         {
             double dist = l_rayDistances[i];
             double colorValue = Transformations::remap(dist, 0.0, l_windowHeight, 255.0, 0.0);
-            double heightValue = Transformations::remap(dist, 0.0, 2000.0, l_windowHeight, 0.0);
+            double heightValue = screen_dist / dist * 20.0;
 
             rectangleShape.setFillColor(sf::Color(255, 255, 255, colorValue));
-            rectangleShape.setPosition(sf::Vector2f(widthSize * i, 0));
+            rectangleShape.setPosition(sf::Vector2f(widthSize * i, l_windowHeight / 2 - heightValue / 2));
             rectangleShape.setSize(sf::Vector2f(widthSize, heightValue));
 
             m_window.draw(rectangleShape);
